@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import Container from "@/components/ui/Container";
 
@@ -21,8 +22,16 @@ export default function Header() {
       <Container>
         <nav className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-secondary">
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/images/cci-logo.png"
+              alt="CCI Logo"
+              width={80}
+              height={48}
+              className="h-12 w-auto"
+              priority
+            />
+            <span className="text-xl font-bold text-secondary hidden sm:block">
               Creedence Clearwater <span className="text-primary">Industrial</span>
             </span>
           </Link>

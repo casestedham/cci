@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 
 const navigation = {
@@ -25,7 +26,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-1">
-            <h3 className="text-xl font-bold mb-4">
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/images/cci-logo.png"
+                alt="CCI Logo"
+                width={60}
+                height={36}
+                className="h-9 w-auto"
+              />
+            </div>
+            <h3 className="text-lg font-bold mb-3">
               Creedence Clearwater <span className="text-primary">Industrial</span>
             </h3>
             <p className="text-gray-400 mb-4">
