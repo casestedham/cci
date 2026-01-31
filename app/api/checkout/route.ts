@@ -3,13 +3,18 @@ import Stripe from "stripe";
 import { Product } from "@/lib/data/products";
 import { incrementCouponUsage } from "@/lib/data/coupons";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2026-01-28.clover",
-});
-
 interface CartItem extends Product {
   quantity: number;
   selectedSize?: string;
+}
+
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error("STRIPE_SECRET_KEY is not set");
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2026-01-28.clover",
+  });
 }
 
 export async function POST(request: Request) {
@@ -22,6 +27,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    const stripe = getStripe();
 
     // Calculate line items
     const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = cart.map(
