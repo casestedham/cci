@@ -5,10 +5,6 @@ import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import { useCart } from "@/lib/cart-context";
-import { loadStripe } from "@stripe/stripe-js";
-
-// Make sure to add your Stripe publishable key to .env.local
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
 
 export default function CartPage() {
   const {
