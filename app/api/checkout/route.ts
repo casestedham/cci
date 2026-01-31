@@ -65,7 +65,7 @@ export async function POST(request: Request) {
       incrementCouponUsage(couponCode);
     }
 
-    return NextResponse.json({ sessionId: session.id });
+    return NextResponse.json({ url: session.url });
   } catch (error) {
     console.error("Error creating checkout session:", error);
     return NextResponse.json(

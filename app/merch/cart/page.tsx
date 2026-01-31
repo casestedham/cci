@@ -94,12 +94,11 @@ export default function CartPage() {
         }),
       });
 
-      const { sessionId } = await response.json();
+      const { url } = await response.json();
 
       // Redirect to Stripe Checkout
-      const stripe = await stripePromise;
-      if (stripe) {
-        await stripe.redirectToCheckout({ sessionId });
+      if (url) {
+        window.location.href = url;
       }
     } catch (error) {
       alert("Error processing checkout. Please try again.");
